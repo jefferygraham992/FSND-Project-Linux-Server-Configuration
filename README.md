@@ -150,6 +150,23 @@ Students will take a baseline installation of a Linux distribution on a virtual 
       * `sudo service apache2 restart `
 
 
+   Reference: [How To Deploy a Flask Application on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
+
+## Populate database
+   1. Change the line creating the database to use postgres instead of sqlite in the `database_setup.py`, `__init__.py` and `thomastrains.py`
+      * `engine = create_engine('sqlite:///thomascatalog.db')` becomes `engine = create_engine('postgresql://catalog:catalog@localhost/catalog')`
+   2. Use the full path to `client_secrets.json` and `fb_client_secrets.json` in the `project.py` file
+   3. Setup the database
+      * `sudo python database_setup.py`
+   4. Populate the database
+      * `sudo python thomastrains.py`
+   5. Run the application
+      * `sudo python __init__.py`
+
+
+Reference: [Engine Configuration¶](http://docs.sqlalchemy.org/en/latest/core/engines.html)
+
+
 
 
 
