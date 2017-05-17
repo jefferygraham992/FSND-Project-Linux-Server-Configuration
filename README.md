@@ -163,8 +163,12 @@ Students will take a baseline installation of a Linux distribution on a virtual 
    5. Run the application
       * `sudo python __init__.py`
 
+   Reference: [Engine Configuration¶](http://docs.sqlalchemy.org/en/latest/core/engines.html)
 
-Reference: [Engine Configuration¶](http://docs.sqlalchemy.org/en/latest/core/engines.html)
+## Update OAuth in google and facebook's developer settings.
+   * Go to Google Developer Console and set javascript origins and redirect URLS using the hostname.
+   * Go to facebook developer apps, select this app and set the URL in both basic and advanced settings.
+*Note:* The url for the application can be found by running: `nslookup <IP addess of server>`
 
 
 
