@@ -3,9 +3,14 @@
 Students will take a baseline installation of a Linux distribution on a virtual machine and prepare it to host their web applications, to include installing updates, securing it from a number of attack vectors and installing/configuring web and database servers.
 
 ##Settings
-IP Address: 34.199.55.49
-SSH Port: 2200
-URL: [http://ec2-34-199-55-49.compute-1.amazonaws.com/](http://ec2-34-199-55-49.compute-1.amazonaws.com/)
+* IP Address: 34.199.55.49
+* SSH Port: 2200
+* URL: [http://ec2-34-199-55-49.compute-1.amazonaws.com/](http://ec2-34-199-55-49.compute-1.amazonaws.com/)
+* Logging In:
+  1. Save private key to your local machine in the `~/.ssh` folder
+    * `mv ~/DIRECTORY_WHERE_KEY_IS DOWNLOADED/linuxServerConfiguration.rsa` `~/.ssh/`
+  2. SSH into server:
+    * `ssh grader@34.199.55.49 -p 2200 -i ~/.ssh/linuxServerConfiguration.rsa`
 
 
 ## Secure the server
@@ -437,20 +442,6 @@ Reference: [How to secure an Ubuntu 16.04 LTS server](https://www.thefanclub.co.
        * `sudo apt-get install logwatch libdate-manip-perl`
     2. View log files
        * `sudo logwatch | less`
-
-14.
-
-
-
-
-
-
-
-
-
-
-
-### Settings
 
 
 ## Author
