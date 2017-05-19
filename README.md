@@ -2,6 +2,12 @@
 
 Students will take a baseline installation of a Linux distribution on a virtual machine and prepare it to host their web applications, to include installing updates, securing it from a number of attack vectors and installing/configuring web and database servers.
 
+##Settings
+IP Address: 34.199.55.49
+SSH Port: 2200
+URL: [http://ec2-34-199-55-49.compute-1.amazonaws.com/](http://ec2-34-199-55-49.compute-1.amazonaws.com/)
+
+
 ## Secure the server
 1. Update all currently installed packages
    * `sudo apt-get update`
@@ -21,11 +27,13 @@ Students will take a baseline installation of a Linux distribution on a virtual 
    * `sudo ufw allow ntp`
    * `sudo ufw enable`
 
+
 ## Give grader access
 1. Create a new user account named grader
    * `sudo adduser grader`
 2. Give grader the permission to sudo
    * `sudo usermod -aG sudo grader`
+
 
 ## Create an SSH key pair for grader using the ssh-keygen tool
 1. Change to grader account
@@ -44,9 +52,11 @@ Students will take a baseline installation of a Linux distribution on a virtual 
 7. Change the file permissions of the authorized_keys file to 644 (this means only owner can write, others can read).
    * `chmod 644 .ssh/authorized_keys`
 
+
 ## Set timezone to UTC
 1. Configure the local timezone to UTC
    * `sudo  timedatectl set-timezone Etc/UTC` (Note: By default timedatectl syncs the time once on boot and later on uses socket activation to recheck once network connections become active.)
+
 
 ## Configure catalog database
    1. Install PostgreSQL
@@ -70,7 +80,9 @@ Students will take a baseline installation of a Linux distribution on a virtual 
    10. Restart postgres
       * `sudo service postgresql restart`
 
+
 ## Install and configure Apache to serve item catalog application
+Reference: [How To Deploy a Flask Application on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
    1. Install Apache using your package manager with the following command:
       * `sudo apt-get install apache2`
    2. Install mod_wsgi:
@@ -150,9 +162,8 @@ Students will take a baseline installation of a Linux distribution on a virtual 
       * `sudo service apache2 restart `
 
 
-   Reference: [How To Deploy a Flask Application on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
-
 ## Populate database
+Reference: [Engine Configuration¶](http://docs.sqlalchemy.org/en/latest/core/engines.html)
    1. Change the line creating the database to use postgres instead of sqlite in the `database_setup.py`, `__init__.py` and `thomastrains.py`
       * `engine = create_engine('sqlite:///thomascatalog.db')` becomes `engine = create_engine('postgresql://catalog:catalog@localhost/catalog')`
    2. Use the full path to `client_secrets.json` and `fb_client_secrets.json` in the `project.py` file
@@ -163,14 +174,15 @@ Students will take a baseline installation of a Linux distribution on a virtual 
    5. Run the application
       * `sudo python __init__.py`
 
-   Reference: [Engine Configuration¶](http://docs.sqlalchemy.org/en/latest/core/engines.html)
 
 ## Update OAuth in google and facebook's developer settings.
    * Go to Google Developer Console and set javascript origins and redirect URLS using the hostname.
    * Go to facebook developer apps, select this app and set the URL in both basic and advanced settings.
 *Note:* The url for the application can be found by running: `nslookup <IP addess of server>`
 
+
 ## Extra steps to harden Ubuntu server
+Reference: [How to secure an Ubuntu 16.04 LTS server](https://www.thefanclub.co.za/how-to/how-secure-ubuntu-1604-lts-server-part-1-basics)
 1. Secure shared memory
    Shared memory can be used in an attack against a running service, so it is always best to secure that portion of memory. You can do this by modifying the /etc/fstab file.
    1. Open the /etc/fstab file.
@@ -425,6 +437,8 @@ Students will take a baseline installation of a Linux distribution on a virtual 
        * `sudo apt-get install logwatch libdate-manip-perl`
     2. View log files
        * `sudo logwatch | less`
+
+14.
 
 
 
