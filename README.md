@@ -1,4 +1,4 @@
-# FSND-Project-Neighborhood Map
+# FSND-Project-Linux-Server-Configuration
 
 Students will take a baseline installation of a Linux distribution on a virtual machine and prepare it to host their web applications, to include installing updates, securing it from a number of attack vectors and installing/configuring web and database servers.
 
